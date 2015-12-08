@@ -6,7 +6,6 @@
 	<artifactId>googlecodejam-client-osgi</artifactId>
 	<version>1.1.2</version>
 	<name>GoogleCodeJam OSGi Client</name>
-	<packaging>bundle</packaging>
 	<description>OSGi version of Java client API for Google Code Jam contest</description>
 	<url>https://github.com/Faylixe/googlecodejam-client-osgi</url>
 	<licenses>
