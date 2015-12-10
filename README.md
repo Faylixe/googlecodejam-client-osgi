@@ -4,12 +4,8 @@
 
 This project is a simple port, of the existing
 [fr.faylixe:googlecodejam-client](https://github.com/Faylixe/googlecodejam-client)
-artifact, into an stand alone OSGi bundle with dependencies embed. Bundle is created
+artifact, into an OSGi bundle with dependencies embed. Bundle is created
 using *maven-bundle-plugin* and could be integrated in any OSGi project.
-
-Required existing OSGi dependencies in Maven Central :
-
-* [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.jsoup/jsoup/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.jsoup/jsoup)
 
 # Eclipse integration
 
