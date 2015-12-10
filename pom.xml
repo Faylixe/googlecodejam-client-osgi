@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.faylixe</groupId>
 	<artifactId>googlecodejam-client-osgi</artifactId>
-	<version>1.2.4</version>
+	<version>1.2.5</version>
 	<packaging>bundle</packaging>
 	<name>GoogleCodeJam OSGi Client</name>
 	<description>OSGi version of Java client API for Google Code Jam contest</description>
@@ -77,7 +77,7 @@
 							<instructions>
 								<Bundle-SymbolicName>fr.faylixe.googlecodejam.client</Bundle-SymbolicName>
 								<Bundle-Version>${pom.version}</Bundle-Version>
-								<Export-Package>fr.faylixe.googlecodejam.client.*</Export-Package>
+								<Export-Package>fr.faylixe.googlecodejam.client.*, org.openqa.selenium.*</Export-Package>
 								<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
 								<Embed-Transitive>true</Embed-Transitive>
 								<Embed-Directory>target/dependency</Embed-Directory>
