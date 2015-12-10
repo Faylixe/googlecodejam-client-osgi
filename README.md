@@ -1,6 +1,15 @@
-# googlecodejam-client-osgi [![Build Status](https://travis-ci.org/Faylixe/googlecodejam-client-osgi.svg)](https://travis-ci.org/Faylixe/googlecodejam-client-osgi)
+# Google Code Jam - Client API (OSGi packaged version)
 
-OSGi version of googlecodejam-client
+[![Build Status](https://travis-ci.org/Faylixe/googlecodejam-client-osgi.svg)](https://travis-ci.org/Faylixe/googlecodejam-client-osgi) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi)
+
+This project is a simple port, of the existing
+[fr.faylixe:googlecodejam-client](https://github.com/Faylixe/googlecodejam-client)
+artifact, into an stand alone OSGi bundle with dependencies embed. Bundle is created
+using *maven-bundle-plugin* and could be integrated in any OSGi project.
+
+Required existing OSGi dependencies in Maven Central :
+
+* [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.jsoup/jsoup/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.jsoup/jsoup)
 
 # Eclipse integration
 
