@@ -4,7 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.faylixe</groupId>
 	<artifactId>googlecodejam-client-osgi</artifactId>
-	<version>1.2.0</version>
+	<version>1.2.3</version>
+	<packaging>bundle</packaging>
 	<name>GoogleCodeJam OSGi Client</name>
 	<description>OSGi version of Java client API for Google Code Jam contest</description>
 	<url>https://github.com/Faylixe/googlecodejam-client-osgi</url>
@@ -44,32 +45,6 @@
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<version>2.2.1</version>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.9.1</version>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
 						<version>1.5</version>
 						<executions>
@@ -95,25 +70,36 @@
 					<plugin>
 						<groupId>org.apache.felix</groupId>
 						<artifactId>maven-bundle-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>bundle-manifest</id>
-								<phase>process-classes</phase>
-								<goals>
-									<goal>manifest</goal>
-								</goals>	
-							</execution>
-						</executions>
+						<version>2.5.0</version>
 						<extensions>true</extensions>
 						<configuration>
+							<manifestLocation>META-INF</manifestLocation>
 							<instructions>
+								<Bundle-SymbolicName>fr.faylixe.googlecodejam.client</Bundle-SymbolicName>
+								<Bundle-Version>${pom.version}</Bundle-Version>
+								<Export-Package>fr.faylixe.googlecodejam.client.*</Export-Package>
 								<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
 								<Embed-Transitive>true</Embed-Transitive>
-								<Bundle-ClassPath>{maven-dependencies}</Bundle-ClassPath>
-								<Export-Package>fr.faylixe.googlecodejam.client.*;version="1.2.0"</Export-Package>
-								<Bundle-SymbolicName>fr.faylixe.googlecodejam.client</Bundle-SymbolicName>
+								<Embed-Directory>target/dependency</Embed-Directory>
+								<Embed-StripGroup>true</Embed-StripGroup>
+								<Import-Package>org.jsoup.nodes,org.apache.commons.cli,org.openqa.selenium,com.google.api.client.http,com.google.gson</Import-Package>						
+								<!-- <Bundle-ClassPath>{maven-dependencies}</Bundle-ClassPath> -->
 							</instructions>
 						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<version>2.10</version>
+						<executions>
+							<execution>
+								<id>copy-dependencies</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy-dependencies</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
@@ -123,15 +109,6 @@
 							<archive>
 								<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
 							</archive>
-						</configuration>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>3.1</version>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
 						</configuration>
 					</plugin>
 					<plugin>
@@ -146,6 +123,55 @@
 						</configuration>
 					</plugin>
 				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<lifecycleMappings>
+										<lifecycleMapping>
+											<packagingType>bundle</packagingType>
+											<lifecycleMappingId>org.sonatype.tycho.m2e.wrapperBundle</lifecycleMappingId>
+										</lifecycleMapping>
+									</lifecycleMappings>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.felix</groupId>
+												<artifactId>maven-bundle-plugin</artifactId>
+												<versionRange>2.1.0</versionRange>
+												<goals>
+													<goal>bundle</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<configurator>
+													<id>org.sonatype.tycho.m2e.wrapperBundle</id>
+												</configurator>
+											</action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.felix</groupId>
+												<artifactId>maven-bundle-plugin</artifactId>
+												<versionRange>2.1.0</versionRange>
+												<goals>
+													<goal>manifest</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<ignore />
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 			</build>
 		</profile>
 	</profiles>
