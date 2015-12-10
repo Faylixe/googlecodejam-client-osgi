@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.faylixe</groupId>
 	<artifactId>googlecodejam-client-osgi</artifactId>
-	<version>1.2.5</version>
+	<version>1.2.17</version>
 	<packaging>bundle</packaging>
 	<name>GoogleCodeJam OSGi Client</name>
 	<description>OSGi version of Java client API for Google Code Jam contest</description>
@@ -77,12 +77,20 @@
 							<instructions>
 								<Bundle-SymbolicName>fr.faylixe.googlecodejam.client</Bundle-SymbolicName>
 								<Bundle-Version>${pom.version}</Bundle-Version>
-								<Export-Package>fr.faylixe.googlecodejam.client.*, org.openqa.selenium.*</Export-Package>
-								<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency>
+								<Export-Package>
+										fr.faylixe.googlecodejam.client.*,
+										org.openqa.selenium.*
+								</Export-Package>
+								<Import-Package>
+									!com.ibm.uvm.tools,
+									!com.sun.jdmk.comm,
+									!javax.jmdns,
+									*
+								</Import-Package>
+								<Embed-Dependency>*;scope=compile|runtime;artifactId=!jsoup</Embed-Dependency>
 								<Embed-Transitive>true</Embed-Transitive>
 								<Embed-Directory>target/dependency</Embed-Directory>
 								<Embed-StripGroup>true</Embed-StripGroup>
-								<Import-Package>org.jsoup.nodes,org.apache.commons.cli,org.openqa.selenium,com.google.api.client.http,com.google.gson</Import-Package>						
 								<Bundle-ClassPath>{maven-dependencies}</Bundle-ClassPath>
 							</instructions>
 						</configuration>
@@ -179,7 +187,12 @@
 		<dependency>
 			<groupId>fr.faylixe</groupId>
 			<artifactId>googlecodejam-client</artifactId>
-			<version>1.2.1</version>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>2.4.1</version>
 		</dependency>
 	</dependencies>
 </project>

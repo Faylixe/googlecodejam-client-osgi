@@ -1,4 +1,5 @@
-# Google Code Jam - Client API (OSGi packaged version)
+# Google Code Jam - Client API
+## OSGi packaged version
 
 [![Build Status](https://travis-ci.org/Faylixe/googlecodejam-client-osgi.svg)](https://travis-ci.org/Faylixe/googlecodejam-client-osgi) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi)
 
@@ -9,11 +10,11 @@ using *maven-bundle-plugin* and could be integrated in any OSGi project.
 
 # Eclipse integration
 
-In order to use to use it into an Eclipse plugin project, a custom target
+In order to use it into an Eclipse plugin project, a custom target
 platform should be defined. To do so, you first need to create a non faceted
 project into your workspace, through menu ``File > New > Project ...``, select
 then ``Project`` into the general section. Let's call this project
-**custom-target-plaform** for this tutorial purpose.
+**custom-target-platform** for this tutorial purpose.
 
 ## Maven dependencies integration
 
@@ -77,4 +78,9 @@ To run it, just right click on your *POM* file into Eclipse, and select
 ## Target platform creation
 
 Now that we have an automated procedure to retrieve required OSGi bundle from
-Maven Central, we have to integrate this directory into a target platform file.
+Maven Central, we have to integrate this directory into a dedicated target platform.
+To do so, just create a target definition file, from the existing active target
+platform, and add the repository using the following path :
+``${project_loc:/custom-target-platform}/repository``. Once it is done, just click
+on ``Set as Target Plateform``, and you will be able to access to your OSGi version
+of code jam API from any plugin context.
