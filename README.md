@@ -1,3 +1,75 @@
 # googlecodejam-client-osgi [![Build Status](https://travis-ci.org/Faylixe/googlecodejam-client-osgi.svg)](https://travis-ci.org/Faylixe/googlecodejam-client-osgi)
 
 OSGi version of googlecodejam-client
+
+# Eclipse integration
+
+In order to use to use it into an Eclipse plugin project, a custom target
+platform should be defined. To do so, you first need to create a non faceted
+project into your workspace, through menu ``File > New > Project ...``, select
+then ``Project`` into the general section. Let's call this project
+**custom-target-plaform** for this tutorial purpose.
+
+## Maven dependencies integration
+
+Once project created, we will then create an empty folder that we will call
+**repository**. This folder will be the target directory of our *OSGi* dependencies.
+
+So as to download required dependencies into this directory, we will add the
+following ``pom.xml`` file into our project :
+
+```xml
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>your_group_id</groupId>
+	<artifactId>custom-target-platform</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<properties>
+		<outputDirectory>repository</outputDirectory>
+	</properties>
+  <!-- We add our required dependencies here -->
+	<dependencies>
+		<dependency>
+			<groupId>fr.faylixe</groupId>
+			<artifactId>googlecodejam-client-osgi</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.8</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+```
+
+This *POM* will only download required dependencies into our target directory.
+To run it, just right click on your *POM* file into Eclipse, and select
+``Run as > Maven install``.
+
+## Target platform creation
+
+Now that we have an automated procedure to retrieve required OSGi bundle from
+Maven Central, we have to integrate this directory into a target platform file.
