@@ -1,6 +1,4 @@
-# Google Code Jam - Client API
-## OSGi packaged version
-
+# Google Code Jam - OSGi client API
 [![Build Status](https://travis-ci.org/Faylixe/googlecodejam-client-osgi.svg)](https://travis-ci.org/Faylixe/googlecodejam-client-osgi) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi)
 
 This project is a simple port, of the existing
