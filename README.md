@@ -1,5 +1,5 @@
 # Google Code Jam - OSGi client API
-[![Build Status](https://travis-ci.org/Faylixe/googlecodejam-client-osgi.svg)](https://travis-ci.org/Faylixe/googlecodejam-client-osgi) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi)
+[![Build Status](https://travis-ci.org/Faylixe/googlecodejam-client-osgi.svg)](https://travis-ci.org/Faylixe/googlecodejam-client-osgi) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/fr.faylixe/googlecodejam-client-osgi) [![Join the chat at https://gitter.im/Faylixe/googlecodejam-client](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Faylixe/googlecodejam-client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This project is a simple port, of the existing
 [fr.faylixe:googlecodejam-client](https://github.com/Faylixe/googlecodejam-client)
