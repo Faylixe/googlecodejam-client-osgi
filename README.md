@@ -6,7 +6,19 @@ This project is a simple port, of the existing
 artifact, into an OSGi bundle with dependencies embed. Bundle is created
 using *maven-bundle-plugin* and could be integrated in any OSGi project.
 
-# Eclipse integration
+## Maven dependency
+
+Following dependency could be added to your *POM.xml* if you want to use the OSGi client API into your project.
+
+```xml
+<dependency>
+    <groupId>fr.faylixe</groupId>
+    <artifactId>googlecodejam-client-osgi</artifactId>
+    <version>1.2.20</version>
+</dependency>
+```
+
+## Eclipse integration
 
 In order to use it into an Eclipse plugin project, a custom target
 platform should be defined. To do so, you first need to create a non faceted
@@ -14,7 +26,7 @@ project into your workspace, through menu ``File > New > Project ...``, select
 then ``Project`` into the general section. Let's call this project
 **custom-target-platform** for this tutorial purpose.
 
-## Maven dependencies integration
+### Maven dependencies integration
 
 Once project created, we will then create an empty folder that we will call
 **repository**. This folder will be the target directory of our *OSGi* dependencies.
@@ -73,7 +85,7 @@ This *POM* will only download required dependencies into our target directory.
 To run it, just right click on your *POM* file into Eclipse, and select
 ``Run as > Maven install``.
 
-## Target platform creation
+### Target platform creation
 
 Now that we have an automated procedure to retrieve required OSGi bundle from
 Maven Central, we have to integrate this directory into a dedicated target platform.
