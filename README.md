@@ -14,7 +14,7 @@ Following dependency could be added to your *POM.xml* if you want to use the OSG
 <dependency>
     <groupId>fr.faylixe</groupId>
     <artifactId>googlecodejam-client-osgi</artifactId>
-    <version>1.2.31</version>
+    <version>1.2.32</version>
 </dependency>
 ```
 
@@ -52,7 +52,7 @@ following ``pom.xml`` file into our project :
 		<dependency>
 			<groupId>fr.faylixe</groupId>
 			<artifactId>googlecodejam-client-osgi</artifactId>
-			<version>1.2.31</version>
+			<version>1.2.32</version>
 		</dependency>
 	</dependencies>
 	<build>
