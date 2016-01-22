@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.faylixe</groupId>
 	<artifactId>googlecodejam-client-osgi</artifactId>
-	<version>1.2.32</version>
+	<version>1.2.33</version>
 	<packaging>bundle</packaging>
 	<name>GoogleCodeJam OSGi Client</name>
 	<description>OSGi version of Java client API for Google Code Jam contest</description>
@@ -118,6 +118,8 @@
 									!com.ibm.uvm.tools,
 									!com.sun.jdmk.comm,
 									!javax.jmdns,
+									!javax.mail.*,
+									!javax.mail,
 									!org.codehaus.aspectwerkz.hook,
 									!sun.misc,
 									*
